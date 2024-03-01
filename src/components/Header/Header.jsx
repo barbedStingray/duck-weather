@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import Button from '../Button/Button';
 
@@ -22,6 +22,9 @@ const Header = (props) => {
   return (
     <header className="duck-header">
       <h1>Duck Weather</h1>
+
+      <Link to="/">Daily Forecast</Link>
+      <Link to="/weeklyWeather">Weekly Forecast</Link>
 
       {props.dayWeekView ?
         <Button

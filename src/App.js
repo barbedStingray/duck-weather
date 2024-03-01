@@ -2,7 +2,12 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Routes, Route } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 
+
+
+// components
 import WeeklyWeather from './components/WeeklyWeather/WeeklyWeather';
 import Header from './components/Header/Header';
 import WeatherToday from './components/WeatherToday/WeatherToday';
@@ -10,17 +15,19 @@ import WeatherToday from './components/WeatherToday/WeatherToday';
 
 function App() {
 
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log(`LOCATION`, location);
+
   // boolean
   const [pageReady, setPageReady] = useState(false);
   const [dayWeekView, setDayWeekView] = useState(false);
 
-
   // weather forecast
   const [forecast, setForecast] = useState([]);
-  // const [weatherNow, setWeatherNow] = useState();
+
 
   async function getWeather(latitude, longitude) {
-
     try {
       // console.log(`lat & long`, latitude, longitude);
       console.log(`coordinates`, latitude, longitude);
@@ -34,16 +41,15 @@ function App() {
       const weatherData = weatherAPI.data.properties.periods;
       console.log(`weatherData`, weatherData);
       setForecast(weatherData);
-      // setWeatherNow(weatherData[0]);
 
     } catch (error) {
       console.error('error', error);
       alert(`whoops! try again later...`);
     } finally {
       setPageReady(true);
+      navigate('/');
       console.log(`page ready`, pageReady);
     }
-
   }
 
   // get location
@@ -73,12 +79,32 @@ function App() {
   return (
     <div className="duckWeather">
 
-      <Header dayWeekView={dayWeekView} setDayWeekView={setDayWeekView}/>
+      <Header dayWeekView={dayWeekView} setDayWeekView={setDayWeekView} />
 
-      <Routes>
-        <Route path='/' element={<WeatherToday forecast={forecast} pageReady={pageReady}/>}/>
-        <Route path='/weeklyWeather' element={<WeeklyWeather forecast={forecast}/>}/>
-      </Routes>
+
+      <AnimatePresence
+        mode='wait'
+      // initial={false}
+      >
+        <Routes location={location} key={location.pathname}>
+          <Route path='/'
+            element={
+              <WeatherToday
+                forecast={forecast}
+                pageReady={pageReady}
+              />
+            }
+          />
+          <Route path='/weeklyWeather'
+            element={
+              <WeeklyWeather
+                forecast={forecast}
+              />
+            }
+          />
+        </Routes>
+      </AnimatePresence>
+
 
     </div>
   );
