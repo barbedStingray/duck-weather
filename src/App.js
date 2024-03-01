@@ -1,13 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Routes, Route } from 'react-router-dom';
+
+import WeeklyWeather from './components/WeeklyWeather/WeeklyWeather';
+import Header from './components/Header/Header';
+import WeatherToday from './components/WeatherToday/WeatherToday';
 
 
 function App() {
 
   // boolean
   const [pageReady, setPageReady] = useState(false);
+  const [dayWeekView, setDayWeekView] = useState(false);
 
 
   // weather forecast
@@ -24,9 +29,9 @@ function App() {
       const response = await axios.get(`https://api.weather.gov/points/${latitude},${longitude}`);
       // console.log('weather response,', response.data);
       // console.log('weather response,', response.data.properties.forecast);
-      const forecast = await axios.get(response.data.properties.forecast);
+      const weatherAPI = await axios.get(response.data.properties.forecast);
       // console.log (`forecast`, forecast);
-      const weatherData = forecast.data.properties.periods;
+      const weatherData = weatherAPI.data.properties.periods;
       console.log(`weatherData`, weatherData);
       setForecast(weatherData);
       // setWeatherNow(weatherData[0]);
@@ -65,26 +70,15 @@ function App() {
 
 
 
-
   return (
     <div className="duckWeather">
-      <header className="duck-header">
-        <h1>Duck Weather</h1>
-      </header>
-      <br />
 
-      {pageReady ?
-        <>
-          <p>{forecast[0].detailedForecast}</p>
-          <p>{forecast[0].temperature} {forecast[0].temperatureUnit}</p>
-          <p>{forecast[0].probabilityOfPrecipitation.value}</p>
-          <p>{forecast[0].shortForecast}</p>
-          <p>{forecast[0].windSpeed}</p>
-          <p>{forecast[0].windDirection}</p>
-          <p>Humidity: {forecast[0].relativeHumidity.value}</p>
-        </>
-        : <p>Loading Page</p>
-      }
+      <Header dayWeekView={dayWeekView} setDayWeekView={setDayWeekView}/>
+
+      <Routes>
+        <Route path='/' element={<WeatherToday forecast={forecast} pageReady={pageReady}/>}/>
+        <Route path='/weeklyWeather' element={<WeeklyWeather forecast={forecast}/>}/>
+      </Routes>
 
     </div>
   );
