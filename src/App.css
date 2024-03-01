@@ -3,3 +3,249 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+@font-face {
+  font-family: duckRain;
+  src: url(./Fonts/RAINYDAY-Italic.ttf);
+}
+/* main div */
+.duckWeather {
+  /* border: 2px solid limegreen; */
+  /* background-color: #0d2303; */
+  background-image: url('./Images/clouds.jpg');
+  background-position: center;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  /* color: white; */
+}
+h1 {
+  font-family: duckRain;
+  font-size: 40px;
+}
+/* header */
+.duck-header {
+  /* border: 2px solid black; */
+  margin: 40px 0px 10px 0px;
+  /* text-align: center; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+  /* font-size: 30px; */
+  /* height: 100px; */
+}
+
+
+
+
+
+
+.weatherToday, .dailyReport, .iconTemp, .dailyData {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-start; */
+  align-items: center;
+}
+/* flexbox overview */
+.weatherToday {
+  /* border: 2px solid magenta; */
+  flex: 1;
+}
+    .dailyReport {
+      /* border: 2px solid gold; */
+      background-color: #ffffff44;
+      padding: 10px;
+      border-radius: 10px;
+    
+      flex-direction: row;
+      width: 80vw;
+      height: 25vh;
+    }
+    .iconTemp {
+      /* border: 2px solid limegreen; */
+      flex-direction: column-reverse;
+      justify-content: flex-end;
+      flex: 3;
+    }
+          .dailyIcon {
+            /* border: 2px solid grey; */
+            /* font-size: 10vw; */
+            font-size: 125px;
+            display: flex;
+            /* margin-top: -10px; */
+          }
+          .dailyTemp {
+            /* border: 2px solid black; */
+            /* font-size: 6vw; */
+            font-size: 60px;
+          }
+    .dailyData {
+      /* border: 2px solid pink; */
+      height: 100%;
+      justify-content: center;
+      gap: 8px;
+      flex: 3;
+      font-size: 20px;
+      text-align: center;
+    }
+    .dailyData h4 {
+      text-decoration: underline;
+    }
+
+
+
+
+
+
+
+.duckDiv {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  /* border: 2px solid red; */
+  background-image: url(./Images/duck.svg);
+  background-repeat: no-repeat;
+  background-size: fit;
+  background-position: center;
+  width: 200px;
+  height: 200px;
+  margin-left: -100px;
+  /* margin-top: -100px; */
+}
+
+
+
+
+
+
+
+
+
+/* WEEKLY FORECAST */
+
+
+
+.weeklyWeather {
+  /* border: 2px solid gold; */
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  /* flex: 1; */
+  gap: 20px;
+}
+.weatherItem {
+  /* border: 2px solid red; */
+  background-color: #ffffff44;
+  padding: 10px;
+  border-radius: 10px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.weeklyTitle {
+  /* border: 2px solid green; */
+  font-family: duckRain;
+  font-size: 35px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+.weatherItemMeat {
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+
+
+/* DROPDOWN MENU */
+
+.menuTrigger {
+  /* border: 1px solid #242319; */
+  width: 70px;
+  height: 70px;
+  /* overflow: hidden; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 55px;
+  /* transform: rotate(0deg); */
+  transition: 0.6s;
+}
+.menuTrigger:hover {
+  transform: rotateY(180deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 170px;
+  left: 50%;
+  margin-left: -125px;
+  border: 1px solid #000000;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px black;
+  border-radius: 10px;
+  padding: 10px 20px;
+  width: 250px;
+  /* z-index: 10; */
+}
+.dropdownMenu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(20px);
+  transition: 0.2s;
+  z-index:999;
+}
+.dropdownMenu.inactive {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-5px);
+  transition: 0.2s;
+}
+
+
+.dropdownMenu ul div {
+  padding: 20px;
+  border-bottom: 1px solid black;
+}
+.dropdownItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 40px;
+  transition: 0.3s;
+  cursor: pointer;
+
+}
+.dropdownMenu ul div:hover {
+  color: #1cb9ed;
+}
+.menuWord {
+  margin-left: 20px;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+
+
+
+/* LOCATE WEATHER */
+
+.locateWeather {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 120px;
+  font-size: 25px;
+}

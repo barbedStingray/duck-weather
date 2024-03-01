@@ -11,6 +11,7 @@ import { AnimatePresence } from 'framer-motion';
 import WeeklyWeather from './components/WeeklyWeather/WeeklyWeather';
 import Header from './components/Header/Header';
 import WeatherToday from './components/WeatherToday/WeatherToday';
+import Discover from './components/Discover/Discover';
 
 
 function App() {
@@ -99,6 +100,12 @@ function App() {
             element={
               <WeeklyWeather
                 forecast={forecast}
+              />
+            }
+          />
+          <Route path='/locate'
+            element={
+              <Discover
               />
             }
           />

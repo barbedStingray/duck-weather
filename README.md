@@ -2,7 +2,10 @@
 
 Welcome to my Weather App!
 
-## Tech Focus
+## Tech List
  - Geolocation
  - API National Weather Service
+ - Framer Motion
+ - React Icons
+ - Axios
  
