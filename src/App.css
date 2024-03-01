@@ -56,16 +56,17 @@ h1 {
 .weatherToday {
   /* border: 2px solid magenta; */
   flex: 1;
+
 }
     .dailyReport {
-      /* border: 2px solid gold; */
+      border: 2px solid gold;
       background-color: #ffffff44;
-      padding: 10px;
+      /* padding: 0px 0px; */
       border-radius: 10px;
     
       flex-direction: row;
       width: 80vw;
-      height: 25vh;
+      height: 27vh;
     }
     .iconTemp {
       /* border: 2px solid limegreen; */
@@ -106,7 +107,7 @@ h1 {
 
 .duckDiv {
   position: absolute;
-  top: 55%;
+  top: 60%;
   left: 50%;
   /* border: 2px solid red; */
   background-image: url(./Images/duck.svg);
