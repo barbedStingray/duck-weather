@@ -46,7 +46,7 @@ h1 {
 
 
 
-.weatherToday, .dailyReport, .iconTemp, .dailyData {
+.weatherToday, .dailyReport, .iconTemp {
   display: flex;
   flex-direction: column;
   /* justify-content: flex-start; */
@@ -65,14 +65,14 @@ h1 {
       /* border: 2px solid limegreen; */
       flex-direction: column-reverse;
       justify-content: flex-end;
-      flex: 3;
+      flex: 2.5;
     }
           .dailyIcon {
             /* border: 2px solid grey; */
             /* font-size: 10vw; */
-            font-size: 115px;
+            font-size: 80px;
             display: flex;
-            margin-top: -15px;
+            /* margin-top: -15px; */
           }
           .dailyTemp {
             /* border: 2px solid black; */
@@ -82,14 +82,22 @@ h1 {
     .dailyData {
       /* border: 2px solid pink; */
       height: 100%;
-      justify-content: flex-start;
-      gap: 8px;
+      display: flex;
+      flex-direction: column;
+      padding: 15px 22px 0px 20px;
+      gap: 10px;
+
       flex: 3;
       font-size: 20px;
-      text-align: center;
     }
-    .dailyData h4 {
-      text-decoration: underline;
+    .rain, .humid, .wind {
+      /* border: 2px solid blue; */
+      display: flex;
+      justify-content: space-between;
+    }
+    .speed{
+      /* border: 2px solid lightblue; */
+      text-align: center;
     }
 
 
@@ -162,7 +170,7 @@ h1 {
   font-family: duckRain;
   font-size: 35px;
   text-align: center;
-  padding: 5px 0px 10px 0px;
+  padding: 5px 0px 0px 0px;
 
 }
 .weatherItemMeat {

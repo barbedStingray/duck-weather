@@ -27,7 +27,6 @@ const WeatherToday = (props) => {
           </div>
 
           <div className='duckDiv'></div>
-          {/* <div className='plantDiv'></div> */}
 
         </m.div>
         : <p>Loading Page</p>

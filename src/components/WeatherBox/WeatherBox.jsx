@@ -1,5 +1,7 @@
 import React from 'react';
 import { WiStormShowers } from "react-icons/wi";
+import { IoPartlySunnyOutline } from "react-icons/io5";
+
 
 
 const WeatherBox = (props) => {
@@ -16,7 +18,8 @@ const WeatherBox = (props) => {
     <div className='weatherItemMeat'>
         <div className='iconTemp'>
             <div className='dailyIcon'>
-                <WiStormShowers />
+                {/* <WiStormShowers /> */}
+                <IoPartlySunnyOutline />
                 {/* <img src={weather.icon} /> */}
 
             </div>
@@ -26,19 +29,22 @@ const WeatherBox = (props) => {
         </div>
 
         <div className='dailyData'>
-            <div>
+            <div className='rain'>
                 {/* <h4>Precipitation</h4> */}
-                <p>Rain:</p>
-                <p>{props.weather.probabilityOfPrecipitation.value}%</p>
+                <p>Rain</p>
+                <p>{props.weather.probabilityOfPrecipitation.value === null ? '0%' : `${props.weather.probabilityOfPrecipitation.value}%`}</p>
             </div>
-            <div>
-                {/* <h4>Humidity</h4> */}
-                <p>Humidity: {props.weather.relativeHumidity.value}</p>
+            <div className='humid'>
+                <p>Humid</p>
+                <p>{props.weather.relativeHumidity.value}rh</p>
             </div>
-            <div>
-                <h4>Wind</h4>
-                <p>{props.weather.windSpeed}</p>
+            <div className='wind'>
+                <p>Wind</p>
+                {/* <p>{props.weather.windSpeed}</p> */}
                 <p>{props.weather.windDirection}</p>
+            </div>
+            <div className='speed'>
+                <p>{props.weather.windSpeed}</p>
             </div>
         </div>
     </div>
