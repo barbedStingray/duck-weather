@@ -26,6 +26,7 @@ function App() {
 
   // weather forecast
   const [forecast, setForecast] = useState([]);
+  const [rightNow, setRightNow] = useState([]);
   const [dayArray, setDayArray] = useState([]);
   const [nightArray, setNightArray] = useState([]);
 
@@ -40,7 +41,13 @@ function App() {
       // console.log('weather response,', response.data.properties.forecast);
       const weatherAPI = await axios.get(response.data.properties.forecast);
       const weatherData = weatherAPI.data.properties.periods;
+
+      // set entire forecast
       setForecast(weatherData);
+
+      // DAY WEATHER set today's weather
+      setRightNow(weatherData[0]);
+      // console.log('RIGHT NOW', weatherData[0]);
 
       // WEEKLY WEATHER set daytime-nighttime
       const dayTime = [];
@@ -102,6 +109,7 @@ function App() {
             element={
               <WeatherToday
                 forecast={forecast}
+                rightNow={rightNow}
                 pageReady={pageReady}
               />
             }

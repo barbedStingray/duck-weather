@@ -58,16 +58,9 @@ h1 {
   flex: 1;
 
 }
-    .dailyReport {
-      /* border: 2px solid gold; */
-      background-color: #ffffff44;
-      /* padding: 0px 0px; */
-      border-radius: 10px;
-    
-      flex-direction: row;
-      width: 80vw;
-      height: 225px;
-    }
+    /* .dailyReport {
+      border: 2px solid gold;
+    } */
     .iconTemp {
       /* border: 2px solid limegreen; */
       flex-direction: column-reverse;
@@ -89,7 +82,7 @@ h1 {
     .dailyData {
       /* border: 2px solid pink; */
       height: 100%;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 8px;
       flex: 3;
       font-size: 20px;
@@ -143,7 +136,7 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  gap: 5px;
+  gap: 15px;
   overflow-x: scroll;
   margin-right: 25px;
   margin-left: 25px;
