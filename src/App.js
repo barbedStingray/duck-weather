@@ -26,22 +26,35 @@ function App() {
 
   // weather forecast
   const [forecast, setForecast] = useState([]);
+  const [dayArray, setDayArray] = useState([]);
+  const [nightArray, setNightArray] = useState([]);
+
 
 
   async function getWeather(latitude, longitude) {
     try {
-      // console.log(`lat & long`, latitude, longitude);
-      console.log(`coordinates`, latitude, longitude);
+      // WEATHER API REQUEST
+      // console.log(`coordinates`, latitude, longitude);
       // const response = await axios.get('https://api.weather.gov/gridpoints/MPX/108,72/forecast');
-      // const response = await axios.get(`https://api.weather.gov/points/28.5384,-81.3789`); // Orlando
       const response = await axios.get(`https://api.weather.gov/points/${latitude},${longitude}`);
-      // console.log('weather response,', response.data);
       // console.log('weather response,', response.data.properties.forecast);
       const weatherAPI = await axios.get(response.data.properties.forecast);
-      // console.log (`forecast`, forecast);
       const weatherData = weatherAPI.data.properties.periods;
-      console.log(`weatherData`, weatherData);
       setForecast(weatherData);
+
+      // WEEKLY WEATHER set daytime-nighttime
+      const dayTime = [];
+      const nightTime = [];
+      weatherData.forEach((weather) => {
+          if (weather.isDaytime === true) {
+              dayTime.push(weather);
+          }
+          else {
+              nightTime.push(weather);
+          }
+      });
+      setDayArray(dayTime);
+      setNightArray(nightTime);
 
     } catch (error) {
       console.error('error', error);
@@ -96,7 +109,8 @@ function App() {
           <Route path='/weeklyWeather'
             element={
               <WeeklyWeather
-                forecast={forecast}
+                dayArray={dayArray}
+                nightArray={nightArray}
               />
             }
           />

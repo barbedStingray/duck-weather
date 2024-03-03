@@ -132,16 +132,26 @@ h1 {
 
 
 
-.weeklyWeather {
-  /* border: 2px solid gold; */
+/* .weeklyWeather {
+  border: 2px solid gold;
 
+} */
+
+.scrollContainer {
+  /* border: 2px solid blue; */
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  /* flex: 1; */
-  gap: 20px;
+  align-items: flex-start;
+  gap: 5px;
+  overflow-x: scroll;
+  margin-right: 25px;
+  margin-left: 25px;
+}
+.timeline {
+  /* border: 2px solid limegreen; */
+  display: flex;
+  gap: 15px;
 }
 .weatherItem {
   /* border: 2px solid red; */
