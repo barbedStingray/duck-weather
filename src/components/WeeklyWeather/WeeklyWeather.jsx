@@ -13,7 +13,7 @@ const WeeklyWeather = (props) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.75, ease: 'easeInOut' }}
+            transition={{ duration: 0.5, ease: 'easeInOut' }}
         >
             {props.forecast.map((weather, index) => (
                 <div
@@ -25,8 +25,8 @@ const WeeklyWeather = (props) => {
                     <div className='weatherItemMeat'>
                         <div className='iconTemp'>
                             <div className='dailyIcon'>
-                                {/* <WiStormShowers /> */}
-                                <img src={weather.icon} />
+                                <WiStormShowers />
+                                {/* <img src={weather.icon} /> */}
 
                             </div>
                             <div className='dailyTemp'>

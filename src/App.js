@@ -71,9 +71,6 @@ function App() {
   useEffect(() => {
     getLocation();
   }, []);
-  // useEffect (() => {
-  //   getWeather();
-  // }, [latitude, longitude]);
 
 
 

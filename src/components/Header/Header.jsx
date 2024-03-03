@@ -10,52 +10,28 @@ import { LiaCompassSolid } from "react-icons/lia";
 
 
 
-
 const Header = (props) => {
-
-  // toggle dropdown
-  const [menu, setMenu] = useState(false);
-
-  // click off menu
-  useEffect(() => {
-    let handler = () => {
-      setMenu(false);
-    };
-    document.addEventListener('mousedown', handler);
-  }, []);
 
   // // menu items
   const menuItems = [
-    { title: 'Day', text: '/', icon: <GiDuckPalm />},
-    { title: 'Week', text: '/weeklyWeather', icon: <GiDuckPalm />},
+    { title: 'Day', text: '/', icon: <GiDuckPalm /> },
+    { title: 'Week', text: '/weeklyWeather', icon: <GiDuckPalm /> },
+    { title: 'Locate', text: '/locate', icon: <LiaCompassSolid /> },
   ];
 
   return (
     <header className="duck-header">
 
-
-
       <h1>Duck Weather</h1>
 
-      <div className='menuContainer'>
-        <div className='menuTrigger' onClick={() => setMenu(!menu)}>
-          <GiPlasticDuck />
-        </div>
-        <div className={`dropdownMenu ${menu ? 'active' : 'inactive'}`}>
-          <ul>
-            <DropDownItem title={'Day'} text={'/'} icon={<GiDuckPalm />}/>
-            <DropDownItem title={'Week'} text={'/weeklyWeather'} icon={<GiDuck />}/>
-            <DropDownItem title={'Locate'} text={'/locate'} icon={<LiaCompassSolid />}/>
-            
-            {/* {menuItems.map((item) => (
-              <DropDownItem title={item.title} text={item.text} icon={item.icon} />
-            ))} */}
-          </ul>
-        </div>
+      <div className='menuItems'>
+        <DropDownItem title={'Day'} text={'/'} icon={<GiDuckPalm />} />
+        <DropDownItem title={'Week'} text={'/weeklyWeather'} icon={<GiPlasticDuck />} />
+        <DropDownItem title={'Locate'} text={'/locate'} icon={<LiaCompassSolid />} />
       </div>
-
-
-
+      {/* {menuItems.map((item) => (
+        <DropDownItem title={item.title} text={item.text} icon={item.icon} />
+      ))} */}
 
     </header>
   )
