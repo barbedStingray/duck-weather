@@ -27,11 +27,11 @@ const WeekOutline = (props) => {
 
         <div className='dailyData'>
             <div>
-                <h4>Precipitation</h4>
+                {/* <h4>Precipitation</h4> */}
                 <p>Rain: {props.weather.probabilityOfPrecipitation.value}%</p>
             </div>
             <div>
-                <h4>Humidity</h4>
+                {/* <h4>Humidity</h4> */}
                 <p>Humidity: {props.weather.relativeHumidity.value}</p>
             </div>
             <div>
