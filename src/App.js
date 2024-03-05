@@ -18,7 +18,7 @@ function App() {
 
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(`LOCATION`, location);
+  // console.log(`LOCATION`, location);
 
   // boolean
   const [pageReady, setPageReady] = useState(false);
@@ -41,6 +41,7 @@ function App() {
       // console.log('weather response,', response.data.properties.forecast);
       const weatherAPI = await axios.get(response.data.properties.forecast);
       const weatherData = weatherAPI.data.properties.periods;
+      console.log(`weather data`, weatherData);
 
       // set entire forecast
       setForecast(weatherData);
@@ -69,17 +70,17 @@ function App() {
     } finally {
       setPageReady(true);
       navigate('/');
-      console.log(`page ready`, pageReady);
+      // console.log(`page ready`, pageReady);
     }
   }
 
   // get location
   function getLocation() {
-    console.log('in getLocation');
+    // console.log('in getLocation');
     let latitude;
     let longitude;
     navigator.geolocation.getCurrentPosition((position) => {
-      console.log(position.coords);
+      // console.log(position.coords);
       latitude = position.coords.latitude;
       longitude = position.coords.longitude;
       getWeather(latitude, longitude);
@@ -108,7 +109,7 @@ function App() {
           <Route path='/'
             element={
               <WeatherToday
-                forecast={forecast}
+                // forecast={forecast}
                 rightNow={rightNow}
                 pageReady={pageReady}
               />

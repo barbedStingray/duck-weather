@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion as m } from 'framer-motion';
 
-import { WiStormShowers } from "react-icons/wi";
 import WeatherBox from '../WeatherBox/WeatherBox';
 
 const WeeklyWeather = (props) => {
@@ -20,17 +19,15 @@ const WeeklyWeather = (props) => {
             <div className='scrollContainer'>
                 <div className='timeline'>
                 {props.dayArray.map((weather, index) => (
-                    <WeatherBox weather={weather} index={index}/>
+                    <WeatherBox weather={weather} index={index} key={index}/>
                 ))}
                 </div>
                 <div className='timeline'>
                 {props.nightArray.map((weather, index) => (
-                    <WeatherBox weather={weather} index={index}/>
+                    <WeatherBox weather={weather} index={index} key={index}/>
                 ))}
                 </div>
             </div>
-
-
         </m.div>
     )
 }

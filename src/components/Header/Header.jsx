@@ -4,18 +4,18 @@ import { Link } from 'react-router-dom';
 import DropDownItem from './DropDownItem';
 
 import { GiPlasticDuck } from "react-icons/gi";
-import { GiDuckPalm } from "react-icons/gi";
-import { GiDuck } from "react-icons/gi";
 import { LiaCompassSolid } from "react-icons/lia";
+import { GiFeather } from "react-icons/gi";
 
 
 
-const Header = (props) => {
+
+const Header = () => {
 
   // // menu items
   const menuItems = [
-    { title: 'Day', text: '/', icon: <GiDuckPalm /> },
-    { title: 'Week', text: '/weeklyWeather', icon: <GiDuckPalm /> },
+    { title: 'Day', text: '/', icon: <GiPlasticDuck /> },
+    { title: 'Week', text: '/weeklyWeather', icon: <GiFeather />  },
     { title: 'Locate', text: '/locate', icon: <LiaCompassSolid /> },
   ];
 
@@ -25,13 +25,10 @@ const Header = (props) => {
       <h1>Duck Weather</h1>
 
       <div className='menuItems'>
-        <DropDownItem title={'Day'} text={'/'} icon={<GiDuckPalm />} />
-        <DropDownItem title={'Week'} text={'/weeklyWeather'} icon={<GiPlasticDuck />} />
-        <DropDownItem title={'Locate'} text={'/locate'} icon={<LiaCompassSolid />} />
+        {menuItems.map((item, i) => (
+          <DropDownItem title={item.title} text={item.text} icon={item.icon} key={i}/>
+        ))}
       </div>
-      {/* {menuItems.map((item) => (
-        <DropDownItem title={item.title} text={item.text} icon={item.icon} />
-      ))} */}
 
     </header>
   )
