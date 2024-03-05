@@ -18,20 +18,22 @@ function App() {
 
   const navigate = useNavigate();
   const location = useLocation();
-  // console.log(`LOCATION`, location);
 
   // boolean
   const [pageReady, setPageReady] = useState(false);
   const [dayWeekView, setDayWeekView] = useState(false);
 
   // weather forecast
-  const [forecast, setForecast] = useState([]);
+  // const [forecast, setForecast] = useState([]);
   const [rightNow, setRightNow] = useState([]);
   const [dayArray, setDayArray] = useState([]);
   const [nightArray, setNightArray] = useState([]);
 
+  // background
+  const [background, setBackground] = useState('');
 
 
+  // get weather
   async function getWeather(latitude, longitude) {
     try {
       // WEATHER API REQUEST
@@ -44,7 +46,7 @@ function App() {
       console.log(`weather data`, weatherData);
 
       // set entire forecast
-      setForecast(weatherData);
+      // setForecast(weatherData);
 
       // DAY WEATHER set today's weather
       setRightNow(weatherData[0]);
@@ -54,15 +56,18 @@ function App() {
       const dayTime = [];
       const nightTime = [];
       weatherData.forEach((weather) => {
-          if (weather.isDaytime === true) {
-              dayTime.push(weather);
-          }
-          else {
-              nightTime.push(weather);
-          }
+        if (weather.isDaytime === true) {
+          dayTime.push(weather);
+        }
+        else {
+          nightTime.push(weather);
+        }
       });
       setDayArray(dayTime);
       setNightArray(nightTime);
+
+      // set background
+      setBackground(backgroundRender(weatherData));
 
     } catch (error) {
       console.error('error', error);
@@ -94,45 +99,81 @@ function App() {
   }, []);
 
 
+  // render weather backgrounds
+  function backgroundRender(weather) {
+    let weatherObject = weather[0];
+    let detailsArray = weatherObject.detailedForecast;
+    let replaceDots = detailsArray.replace(/[.]/g, '');
+    let replaceCommas = replaceDots.replace(/[,]/g, '');
+    let splitDetails = replaceCommas.split(' ');
+
+    for (let i = 0; i < splitDetails.length; i++) {
+      // thunderstorm
+      if (splitDetails[i] == 'thunderstorms' || splitDetails[i] == 'Thunderstorms') {
+        return 'duckWeatherStorm';
+      }
+      // snow
+      else if (splitDetails[i] == 'snow' || splitDetails[i] == 'Snow') {
+        return 'duckWeatherSnow';
+      }
+      // cloudy
+      else if (splitDetails[i] == 'cloudy' || splitDetails[i] == 'Cloudy') {
+        return 'duckWeatherCloud';
+      }
+      // rain
+      else if (splitDetails[i] == 'rain' || splitDetails[i] == 'Rain') {
+        return 'duckWeatherRain';
+      }
+      else if (splitDetails[i] == 'sunny' || splitDetails[i] == 'Sunny' || splitDetails[i] == 'clear') {
+        return 'duckWeatherSunny';
+      }
+      // sunny
+      else {
+        console.log('next word...');
+      }
+    }
+  }
+
+
+
 
   return (
-    <div className="duckWeather">
+    <div className='duckWeather'>
+      <div className={background}>
 
-      <Header dayWeekView={dayWeekView} setDayWeekView={setDayWeekView} />
+        <Header dayWeekView={dayWeekView} setDayWeekView={setDayWeekView} />
 
-
-      <AnimatePresence
-        mode='wait'
-      // initial={false}
-      >
-        <Routes location={location} key={location.pathname}>
-          <Route path='/'
-            element={
-              <WeatherToday
-                // forecast={forecast}
-                rightNow={rightNow}
-                pageReady={pageReady}
-              />
-            }
-          />
-          <Route path='/weeklyWeather'
-            element={
-              <WeeklyWeather
-                dayArray={dayArray}
-                nightArray={nightArray}
-              />
-            }
-          />
-          <Route path='/locate'
-            element={
-              <Discover
-              />
-            }
-          />
-        </Routes>
-      </AnimatePresence>
-
-
+        <AnimatePresence
+          mode='wait'
+        // initial={false}
+        >
+          <Routes location={location} key={location.pathname}>
+            <Route path='/'
+              element={
+                <WeatherToday
+                  // forecast={forecast}
+                  rightNow={rightNow}
+                  pageReady={pageReady}
+                />
+              }
+            />
+            <Route path='/weeklyWeather'
+              element={
+                <WeeklyWeather
+                  dayArray={dayArray}
+                  nightArray={nightArray}
+                />
+              }
+            />
+            <Route path='/locate'
+              element={
+                <Discover
+                />
+              }
+            />
+          </Routes>
+        </AnimatePresence>
+      </div>
     </div>
   );
 }

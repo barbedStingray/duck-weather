@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
+import React from 'react';
 
 import DropDownItem from './DropDownItem';
 
@@ -9,10 +8,9 @@ import { GiFeather } from "react-icons/gi";
 
 
 
-
 const Header = () => {
 
-  // // menu items
+  // menu items
   const menuItems = [
     { title: 'Day', text: '/', icon: <GiPlasticDuck /> },
     { title: 'Week', text: '/weeklyWeather', icon: <GiFeather />  },

@@ -85,8 +85,6 @@ const WeatherBox = (props) => {
                     </div>
                 </div>
             </div>
-
-
         </div>
     )
 }

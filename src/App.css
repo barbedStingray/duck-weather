@@ -8,11 +8,24 @@
   font-family: duckRain;
   src: url(./Fonts/RAINYDAY-Italic.ttf);
 }
-/* main div */
-.duckWeather {
-  /* border: 2px solid limegreen; */
-  /* background-color: #0d2303; */
-  background-image: url('./Images/cloudy.jpg');
+
+/* fade in weather backgrounds */
+@keyframes fadeBackground {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* main div's */
+.duckWeather, 
+.duckWeatherStorm, 
+.duckWeatherSnow, 
+.duckWeatherCloud,
+.duckWeatherRain,
+.duckWeatherSunny {
   background-position: center;
   background-size: cover;
   width: 100vw;
@@ -20,8 +33,30 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  /* color: white; */
+
+  animation: fadeBackground 0.5s;
 }
+.duckWeather {
+  background-image: url('./Images/clouds.jpg');
+}
+.duckWeatherStorm {
+  background-image: url('./Images/storms.jpg');
+}
+.duckWeatherSnow {
+  background-image: url('./Images/snow.jpg');
+}
+.duckWeatherCloud {
+  background-image: url('./Images/cloudy.jpg');
+}
+.duckWeatherRain {
+  background-image: url('./Images/rain.jpg');
+}
+.duckWeatherSunny {
+  background-image: url('./Images/sunny.jpg');
+}
+
+
+
 h1 {
   font-family: duckRain;
   font-size: 40px;
