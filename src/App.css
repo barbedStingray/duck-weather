@@ -12,7 +12,7 @@
 .duckWeather {
   /* border: 2px solid limegreen; */
   /* background-color: #0d2303; */
-  background-image: url('./Images/clouds.jpg');
+  background-image: url('./Images/cloudy.jpg');
   background-position: center;
   background-size: cover;
   width: 100vw;
