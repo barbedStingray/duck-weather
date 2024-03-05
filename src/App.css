@@ -91,7 +91,6 @@ h1 {
 .weatherToday {
   /* border: 2px solid magenta; */
   flex: 1;
-
 }
     /* .dailyReport {
       border: 2px solid gold;
@@ -142,9 +141,10 @@ h1 {
 
 
 .duckDiv {
-  position: absolute;
+  /* position: absolute;
   top: 60%;
-  left: 50%;
+  left: 50%; */
+  margin-top: 90px;
   /* border: 2px solid red; */
   background-image: url(./Images/duck.svg);
   background-repeat: no-repeat;
@@ -152,7 +152,7 @@ h1 {
   background-position: center;
   width: 200px;
   height: 200px;
-  margin-left: -100px;
+  /* margin-left: -100px; */
   /* margin-top: -100px; */
 }
 
@@ -183,6 +183,8 @@ h1 {
   overflow-x: scroll;
   margin-right: 25px;
   margin-left: 25px;
+  padding: 5px;
+  border-radius: 10px;
 }
 .timeline {
   /* border: 2px solid limegreen; */
@@ -191,12 +193,13 @@ h1 {
 }
 .weatherItem {
   /* border: 2px solid red; */
-  background-color: #ffffff44;
+  background-color: #ffffff66;
   padding: 10px;
   border-radius: 10px;
   width: 320px;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 0 5px black;
   /* gap: 10px; */
   /* padding: 5px; */
 }
