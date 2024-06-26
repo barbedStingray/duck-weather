@@ -4,13 +4,13 @@ import { motion as m } from 'framer-motion';
 import WeatherBox from '../WeatherBox/WeatherBox';
 
 
-const WeatherToday = (props) => {
+const WeatherToday = ({ pageReady, rightNow }) => {
 
 
   return (
     <div className='weatherToday'>
 
-      {props.pageReady ?
+      {pageReady ?
         <m.div
           className='dailyReport'
           key={'/'}
@@ -21,7 +21,7 @@ const WeatherToday = (props) => {
         >
           <div className='adjustDailyWeather'>
             <WeatherBox
-              weather={props.rightNow}
+              weather={rightNow}
               index={0}
             />
           </div>

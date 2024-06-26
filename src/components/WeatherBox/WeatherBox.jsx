@@ -1,13 +1,15 @@
 import React from 'react';
 
 import { WiDaySunny } from "react-icons/wi";
-import { WiCloudy } from "react-icons/wi"; 
+import { WiCloudy } from "react-icons/wi";
 import { WiRaindrops } from "react-icons/wi";
 import { WiThunderstorm } from "react-icons/wi";
 import { WiSnowflakeCold } from "react-icons/wi";
 import { PiWind } from "react-icons/pi";
 
+
 const WeatherBox = (props) => {
+
 
 
     function iconRender() {
@@ -71,10 +73,6 @@ const WeatherBox = (props) => {
                     <div className='rain'>
                         <p>Rain</p>
                         <p>{props.weather.probabilityOfPrecipitation.value === null ? '0%' : `${props.weather.probabilityOfPrecipitation.value}%`}</p>
-                    </div>
-                    <div className='humid'>
-                        <p>Humid</p>
-                        <p>{props.weather.relativeHumidity.value}rh</p>
                     </div>
                     <div className='wind'>
                         <p>Wind</p>

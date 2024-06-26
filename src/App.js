@@ -32,6 +32,7 @@ function App() {
   // background
   const [background, setBackground] = useState('');
 
+  
 
   // get weather
   async function getWeather(latitude, longitude) {
@@ -101,11 +102,11 @@ function App() {
 
   // render weather backgrounds
   function backgroundRender(weather) {
-    let weatherObject = weather[0];
-    let detailsArray = weatherObject.detailedForecast;
-    let replaceDots = detailsArray.replace(/[.]/g, '');
-    let replaceCommas = replaceDots.replace(/[,]/g, '');
-    let splitDetails = replaceCommas.split(' ');
+    const weatherObject = weather[0];
+    const detailsArray = weatherObject.detailedForecast;
+    const replaceDots = detailsArray.replace(/[.]/g, '');
+    const replaceCommas = replaceDots.replace(/[,]/g, '');
+    const splitDetails = replaceCommas.split(' ');
 
     for (let i = 0; i < splitDetails.length; i++) {
       // thunderstorm
